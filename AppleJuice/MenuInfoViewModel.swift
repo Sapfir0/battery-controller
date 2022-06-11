@@ -9,8 +9,8 @@ import Foundation
 @available(OSX 11.0, *)
 class MenuInfoViewModel: ObservableObject {
     @Published var powerSource = NSLocalizedString("Unknown", comment: "")
-    @Published var remaining = NSLocalizedString("Calculating", comment: "")
-    @Published var currentCharge = "--"
+    @Published var remainingPercent = NSLocalizedString("Calculating", comment: "")
+    @Published var remainingTime = NSLocalizedString("Unknown", comment: "")
 
     private let batteryService: BatteryService?
 
@@ -37,7 +37,6 @@ class MenuInfoViewModel: ObservableObject {
     private func update() {
         guard let percentage = batteryService?.percentage,
               let timeRemaining = batteryService?.timeRemaining,
-              let currentCharge = batteryService?.charge,
               let maxCapacity = batteryService?.capacity,
               let amperage = batteryService?.amperage,
               let powerSource = batteryService?.powerSource
@@ -46,11 +45,8 @@ class MenuInfoViewModel: ObservableObject {
         }
 
         self.powerSource = powerSource.localizedDescription
-        self.currentCharge = String(format: "%i / %i mAh (%i mA)", currentCharge, maxCapacity, amperage)
-        if UserPreferences.showTime {
-            self.remaining = percentage.formatted
-        } else {
-            self.remaining = timeRemaining.formatted
-        }
+        self.remainingPercent = percentage.formatted
+        self.remainingTime = timeRemaining.formatted
+
     }
 }

@@ -66,7 +66,7 @@ class ApplicationMenuDelegate: NSObject, NSMenuDelegate {
             attributes: [.font: NSFont.menuFont(ofSize: 13.0), .paragraphStyle: paragraphStyle])
 
         let details = NSAttributedString(
-            string: "\n\(remaining)  \(charge) / \(capacity) mAh (\(amperage) mA)",
+            string: "\n\(remaining)  \(charge)",
             attributes: [.font: NSFont.menuFont(ofSize: 13.0)])
 
         powerSourceLabel.append(details)
