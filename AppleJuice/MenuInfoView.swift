@@ -26,7 +26,7 @@ struct MenuInfoView: View {
                     .font(.system(size: smallFontSize))
             }
             HStack(alignment: .top, spacing: 9) {
-                Text("\(model.remainingTime) remaining")
+                Text("\(model.remainingTime) \(model.batteryService?.state == .chargedAndPlugged ? "" : "remaining")")
                         .font(.system(size: smallFontSize))
             }
         }

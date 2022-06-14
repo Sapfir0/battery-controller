@@ -12,7 +12,7 @@ class MenuInfoViewModel: ObservableObject {
     @Published var remainingPercent = NSLocalizedString("Calculating", comment: "")
     @Published var remainingTime = NSLocalizedString("Unknown", comment: "")
 
-    private let batteryService: BatteryService?
+    @Published var batteryService: BatteryService?
 
     init() {
         do {
