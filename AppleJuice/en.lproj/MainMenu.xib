@@ -119,12 +119,6 @@
                         <action selector="checkForUpdates:" target="Avc-Ie-Abt" id="Aqj-nm-y4m"/>
                     </connections>
                 </menuItem>
-                <menuItem title="About Apple Juice..." id="PUB-MR-Ddo">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="orderFrontStandardAboutPanel:" target="-1" id="vXr-y6-aUC"/>
-                    </connections>
-                </menuItem>
                 <menuItem isSeparatorItem="YES" id="bcW-nq-A9L"/>
                 <menuItem title="Quit" id="fXh-MN-Omu">
                     <modifierMask key="keyEquivalentModifierMask"/>

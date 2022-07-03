@@ -34,12 +34,12 @@ final class BatteryService {
     var state: BatteryState? {
         guard let charging = isCharging,
               let plugged = isPlugged,
-              let charged = isCharged
+              let isFullyCharged = isFullyCharged
         else {
             return nil
         }
 
-        if charged, plugged {
+        if isFullyCharged, plugged {
             return .chargedAndPlugged
         }
         if charging {
@@ -49,10 +49,28 @@ final class BatteryService {
         return .discharging(percentage: percentage)
     }
 
+    /// The postfix of battery state
+    var remainingPostfix: String {
+        guard let charging = isCharging,
+              let plugged = isPlugged,
+              let charged = isFullyCharged
+        else {
+            return ""
+        }
+
+        if charged, plugged {
+            return ""
+        }
+        if charging {
+            return "until fully charged"
+        }
+
+        return "remaining" // discharging
+    }
+
     /// The estimated time remaining until the battery is empty or fully charged.
     var timeRemaining: TimeRemaining {
         let time = IOPSGetTimeRemainingEstimate()
-        print(time)
         switch time {
         case kIOPSTimeRemainingUnknown:
             return TimeRemaining(minutes: nil, state: state)
@@ -95,8 +113,9 @@ final class BatteryService {
     }
 
     /// Checks whether the battery is fully charged.
-    var isCharged: Bool? {
-        getRegistryProperty(forKey: .fullyCharged) as? Bool
+    var isFullyCharged: Bool? {
+//        getRegistryProperty(forKey: .fullyCharged) as? Bool
+        self.percentage.numeric == 100
     }
 
     /// Checks whether the battery is plugged into an unlimited power supply.

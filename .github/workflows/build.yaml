@@ -4,10 +4,16 @@ on: [push]
 
 jobs:
   build:
-
     runs-on: macos-latest
-
+    strategy:
+      matrix:
+        platform:
+          - macOS
+          - watchOS
+          - tvOS
+          - iOS
+          - mac-catalyst
     steps:
-      - uses: actions/checkout@v3
-      - name: Build
-        run: swift build
+      - use: mxcl/xcodebuild@v1
+        with:
+          platform: ${{ matrix.platform }}

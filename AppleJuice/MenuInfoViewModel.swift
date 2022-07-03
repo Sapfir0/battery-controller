@@ -11,6 +11,7 @@ class MenuInfoViewModel: ObservableObject {
     @Published var powerSource = NSLocalizedString("Unknown", comment: "")
     @Published var remainingPercent = NSLocalizedString("Calculating", comment: "")
     @Published var remainingTime = NSLocalizedString("Unknown", comment: "")
+    @Published var remainingPostfix = "remaining"
 
     @Published var batteryService: BatteryService?
 
@@ -39,11 +40,13 @@ class MenuInfoViewModel: ObservableObject {
               let timeRemaining = batteryService?.timeRemaining,
               let maxCapacity = batteryService?.capacity,
               let amperage = batteryService?.amperage,
-              let powerSource = batteryService?.powerSource
+              let powerSource = batteryService?.powerSource,
+              let remainingPostfix = batteryService?.remainingPostfix
         else {
             return
         }
 
+        self.remainingPostfix = remainingPostfix
         self.powerSource = powerSource.localizedDescription
         self.remainingPercent = percentage.formatted
         self.remainingTime = timeRemaining.formatted
