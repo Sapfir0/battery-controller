@@ -9,6 +9,7 @@ import AppKit
 import IOBluetooth
 import AVFoundation
 
+
 @NSApplicationMain
 final class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_: Notification) {
@@ -22,10 +23,14 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         }
         for item in devices {
             if let device = item as? IOBluetoothDevice {
+                let headset = IOBluetoothHandsFreeDevice()
+
                 if (device.isConnected()) {
                     print("Name: \(device.name)")
-                    print("\(device.addressString)")
-                    print(device.isHandsFreeDevice)
+                    if (device.isHandsFreeDevice) {
+                        let headset = IOBluetoothHandsFreeDevice()
+                        print(headset.isConnected)
+                    }
                 }
 
             }

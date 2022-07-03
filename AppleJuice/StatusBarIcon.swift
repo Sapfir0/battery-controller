@@ -84,7 +84,7 @@ internal struct StatusBarIcon {
         else {
             return nil
         }
-
+        print(batteryOutline)
         // Delete the image name for the battery outline to keep it's representations out of the NSCachedImageRep
         batteryOutline.setName(nil)
         let drawingRect = NSRect(x: capacityOffsetX,

@@ -52,6 +52,7 @@ final class BatteryService {
     /// The estimated time remaining until the battery is empty or fully charged.
     var timeRemaining: TimeRemaining {
         let time = IOPSGetTimeRemainingEstimate()
+        print(time)
         switch time {
         case kIOPSTimeRemainingUnknown:
             return TimeRemaining(minutes: nil, state: state)
