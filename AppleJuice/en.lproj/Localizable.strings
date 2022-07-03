@@ -6,7 +6,7 @@
 
 //  Menu Items
 
-"Charged"       = "Charged";
+"Charged"       = "Fully charged";
 "Unknown"       = "Unknown";
 "Battery"       = "Battery";
 "Power Adapter" = "Power Adapter";
@@ -15,7 +15,7 @@
 
 //  Notifications
 
-"Charged Notification Title"       = "Charged";
+"Charged Notification Title"       = "Fully charged";
 "Charged Notification Message"     = "Your Battery is now fully charged.";
 "Low Battery Notification Title"   = "%@ remaining";
 "Low Battery Notification Message" = "Your Mac will sleep soon unless plugged into a power outlet.";
